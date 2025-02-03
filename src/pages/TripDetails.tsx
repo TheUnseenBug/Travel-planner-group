@@ -1,5 +1,11 @@
+import TripItem from "../components/TripItem/TripItem";
+
 function TripDetails() {
-  return <></>;
+  return (
+    <>
+      <TripItem />
+    </>
+  );
 }
 
 export default TripDetails;
