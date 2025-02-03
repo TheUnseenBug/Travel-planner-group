@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 
 //pages
-import Home from "./pages/home.tsx";
+import Home from "./pages/Home.tsx";
 import AddTrip from "./pages/AddTrip.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
