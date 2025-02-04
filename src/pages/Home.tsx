@@ -1,14 +1,23 @@
-export default function Home() {
-  return (
-    <div className="home">
-      <h2>Välkommen hem!</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum dolor
-        assumenda, itaque nesciunt alias voluptatum nobis blanditiis eos
-        officiis aperiam earum eum vel quas odio optio, distinctio ab sunt unde
-        incidunt ipsum omnis amet magnam accusantium aut! Excepturi, cupiditate
-        iusto!
-      </p>
-    </div>
-  );
+import Header from '../nav/Header';
+import Footer from '../nav/Footer';
+
+function Home() {
+    return (
+        <>
+           <Header /> 
+            <main>
+                <h1>Travel Planner</h1>
+                <h2>Are you ready to plan your next dream trip?</h2>
+                <div>
+                    <h3>Your Upcoming Trips</h3>
+                        <section className="displayNextTrips">
+                            {/* dynamic display */}
+                        </section>
+                </div>
+            </main>
+           <Footer />
+        </>
+    )
 }
+
+export default Home;
