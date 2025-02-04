@@ -1,4 +1,4 @@
-import TripItem from "../components/TripItem/TripItem";
+import TripItem from "../components/TravelPlanItem/TravelPlanItem";
 
 function TripDetails() {
   return (
