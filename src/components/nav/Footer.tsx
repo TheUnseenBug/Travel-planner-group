@@ -1,15 +1,16 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
-    return (
-        <>
-         <footer>
-                <nav>
-                    <ul>
-                        <li>Home</li>
-                        <li>Plan New Trip</li>
-                        <li>Details</li>
-                    </ul>
-                </nav>
-            </footer>
-        </>
-    )
+  return (
+    <>
+      <footer className="bg-gray-500 h-16 flex justify-center items-center">
+        <nav className="navBar">
+          <ul className="navList">
+            <Link className="p-2 hover:text-white font-bold" to="/">Hem</Link>
+            <Link className="p-2 hover:text-white font-bold" to="AddTrip">Lägg till ny resa</Link>
+          </ul>
+        </nav>
+      </footer>
+    </>
+  );
 }

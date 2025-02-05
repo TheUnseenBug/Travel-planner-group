@@ -1,15 +1,13 @@
 import Footer from "../components/nav/Footer";
-import Header from "../components/nav/Header";
 
 function Home() {
   return (
     <>
-      <Header />
-      <main>
-        <h1>Travel Planner</h1>
-        <h2>Are you ready to plan your next dream trip?</h2>
+      <main className="m-5 h-screen">
+        <h1 className="text-6xl m-5">Reseplaneraren</h1>
+        <h2 className="m-5">Är du redo att planera din nästa drömresa?</h2>
         <div>
-          <h3>Your Upcoming Trips</h3>
+          <h3 className="text-xl underline">Kommande Resor</h3>
           <section className="displayNextTrips">
             {/* dynamic display */}
           </section>
