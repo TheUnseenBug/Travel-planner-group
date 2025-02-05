@@ -1,4 +1,4 @@
-function TripItem() {
+function TripCard() {
   return (
     <>
       <div>
@@ -28,4 +28,4 @@ function TripItem() {
   );
 }
 
-export default TripItem;
+export default TripCard;
