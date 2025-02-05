@@ -1,5 +1,5 @@
-import Header from '../nav/Header';
-import Footer from '../nav/Footer';
+import Header from '../components/nav/Header';
+import Footer from '../components/nav/Footer';
 
 function Home() {
     return (
