@@ -10,19 +10,19 @@ import clsx from "clsx";
 import { FC, useEffect, useState } from "react";
 import Button from "./button";
 //Oklar error?
-import { Todo } from "../types/todo";
+import { Trip } from "../types/trip";
 
 interface props {
   setOpen?: (open: boolean) => void;
-  editTodo?: (todo: Todo) => void;
-  addTodo?: (todo: Todo) => void;
-  todo?: Todo | undefined;
+  editTrip?: (Trip: Trip) => void;
+  addTrip?: (Trip: Trip) => void;
+  trip?: Trip | undefined;
 }
-//props för att kontrollera när modal ska öppnas och hantera todo i store
-const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
-  const [destination, setDestination] = useState(todo?.city || "");
-  const [date, setDate] = useState(todo?.date || "");
-  const [fields, setFields] = useState<string[]>(todo?.activities || [""]);
+//props för att kontrollera när modal ska öppnas och hantera Trip i store
+const Forms: FC<props> = ({ setOpen, trip, editTrip, addTrip }) => {
+  const [destination, setDestination] = useState(trip?.city || "");
+  const [date, setDate] = useState(trip?.date || "");
+  const [fields, setFields] = useState<string[]>(trip?.activities || [""]);
 
   //Funktioner för att lägga till aktiviteter
   const handleAddField = () => {
@@ -36,28 +36,28 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
     setFields(updatedFields);
   };
 
-  //Om todo finns så uppdaterar vi formuläret med data
+  //Om Trip finns så uppdaterar vi formuläret med data
   useEffect(() => {
-    setDestination(todo?.city || "");
-    setDate(todo?.date || "");
-    setFields(todo?.activities || [""]);
-  }, [todo]);
+    setDestination(trip?.city || "");
+    setDate(trip?.date || "");
+    setFields(trip?.activities || [""]);
+  }, [trip]);
 
-  //Funktion för att spara eller redigera todo
+  //Funktion för att spara eller redigera Trip
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (destination && date && fields.length > 0) {
-      const newTodo = {
-        id: todo ? todo.id : Math.random().toString(),
+      const newTrip = {
+        id: trip ? trip.id : Math.random().toString(),
         city: destination,
         date: date,
         activities: fields,
       };
-      if (todo && editTodo) {
-        editTodo(newTodo);
+      if (trip && editTrip) {
+        editTrip(newTrip);
       }
-      if (addTodo) {
-        addTodo(newTodo);
+      if (addTrip) {
+        addTrip(newTrip);
       }
 
       if (setOpen) {
@@ -72,7 +72,7 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
     <form onSubmit={handleSubmit} className="w-full max-w-lg px-4 bg-slate-700">
       <Fieldset className="p-6 space-y-6 rounded-xl bg-white/5 sm:p-10">
         <Legend className="font-semibold text-white text-base/7">
-          {todo ? "Edit" : "Add"} travel plans for your next trip
+          {trip ? "Edit" : "Add"} travel plans for your next trip
         </Legend>
         <Field>
           <Label className="font-medium text-white text-sm/6">
@@ -161,7 +161,7 @@ const Forms: FC<props> = ({ setOpen, todo, editTodo, addTodo }) => {
             text="Cancel"
             onClick={() => (setOpen ? setOpen(false) : null)}
           />
-          <Button text={todo ? "Edit" : "Add"} type="submit" />
+          <Button text={trip ? "Edit" : "Add"} type="submit" />
         </section>
       </Fieldset>
     </form>

@@ -1,9 +1,9 @@
-import TripItem from "../components/TravelPlanItem/TravelPlanItem";
+import TripCard from "../components/TripCard/TripCard";
 
 function TripDetails() {
   return (
     <>
-      <TripItem />
+      <TripCard />
     </>
   );
 }
