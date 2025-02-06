@@ -1,9 +1,10 @@
-import TripCard from "../components/TripCard/TripCard";
+import TripList from "../components/TripList";
 
 function TripDetails() {
   return (
     <>
-      <TripCard />
+      <h1 className="text-xl font-bold text-white">Your Trips</h1>
+      <TripList />
     </>
   );
 }

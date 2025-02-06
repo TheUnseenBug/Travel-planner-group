@@ -1,4 +1,3 @@
-
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -9,6 +8,7 @@ import {
 //pages
 import Home from "./pages/Home.tsx";
 import AddTrip from "./pages/AddTrip.tsx";
+import TripDetails from "./pages/TripDetails.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 //layouts
@@ -20,7 +20,8 @@ const router = createBrowserRouter(
     <Route path="/" element={<NavLayout />}>
       <Route index element={<Home />} />
       <Route path="AddTrip" element={<AddTrip />} />
-
+      {/*Testroute*/}
+      <Route path="TripDetails" element={<TripDetails />} />
       {/* FIX ME */}
       {/* <Route path=":id" element={<TripDetails />} loader={tripDetailsLoader} /> */}
 
