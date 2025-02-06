@@ -8,7 +8,7 @@ import Home from "../pages/Home";
 import AddTrip from "../pages/AddTrip";
 import NotFound from "../pages/NotFound";
 import Trips from "../pages/Trips";
-// import TripDetails from "../pages/TripDetails";
+import TripDetails from "../pages/TripDetails";
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,7 +16,7 @@ export const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="AddTrip" element={<AddTrip />} />
       <Route path="trips" element={<Trips />} />
-      {/* <Route path="trips/:id" element={<TripDetails />} /> */}
+      <Route path="trips/:id" element={<TripDetails />} />
       <Route path="*" element={<NotFound />} />
     </Route>
   )
