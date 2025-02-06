@@ -15,12 +15,10 @@ import { useDispatch } from "react-redux";
 import { addTrip } from "../helpers/trip";
 
 interface props {
-  setOpen?: (open: boolean) => void;
-  editTrip?: (Trip: Trip) => void;
   trip?: Trip | undefined;
 }
 //props för att kontrollera när modal ska öppnas och hantera Trip i store
-const Forms: FC<props> = ({ setOpen, trip, editTrip }) => {
+const Forms: FC<props> = ({ trip }) => {
   const [destination, setDestination] = useState(trip?.city || "");
   const [date, setDate] = useState(trip?.date || "");
   const [fields, setFields] = useState<string[]>(trip?.activities || [""]);
@@ -55,16 +53,9 @@ const Forms: FC<props> = ({ setOpen, trip, editTrip }) => {
         date: date,
         activities: fields,
       };
-      if (trip && editTrip) {
-        editTrip(newTrip);
-      }
-      if (addTrip) {
-        console.log("adding trip");
-        dispatch(addTrip(newTrip));
-      }
 
-      if (setOpen) {
-        setOpen(false);
+      if (addTrip) {
+        dispatch(addTrip(newTrip));
       }
     } else {
       console.log("Please fill in all fields");
@@ -160,10 +151,6 @@ const Forms: FC<props> = ({ setOpen, trip, editTrip }) => {
           ))}
         </Field>
         <section className="flex justify-end gap-4">
-          <Button
-            text="Cancel"
-            onClick={() => (setOpen ? setOpen(false) : null)}
-          />
           <Button text={trip ? "Edit" : "Add"} type="submit" />
         </section>
       </Fieldset>
