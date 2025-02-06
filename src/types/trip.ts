@@ -8,3 +8,9 @@ export interface Trip {
 export interface TripState {
   trips: Trip[];
 }
+
+export interface RootState {
+  trip : {
+    trips: Trip[];
+  }
+}
