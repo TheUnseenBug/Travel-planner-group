@@ -5,9 +5,9 @@ export default function RootLayout() {
       <nav className=" bg-blue-400 p-2 text-white font-bold ">
         <h1>Reseplaneraren</h1>
         <ul className="flex justify-center gap-4">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="AddTrip">Add Trip</NavLink>
-          <NavLink to="Trips">Your Trips</NavLink>
+          <NavLink to="/">Hem</NavLink>
+          <NavLink to="AddTrip">Lägg till ny resa</NavLink>
+          <NavLink to="Trips">Dina resor</NavLink>
         </ul>
       </nav>
 
