@@ -14,9 +14,7 @@ function Home() {
         <h2>Are you ready to plan your next dream trip?</h2>
         <div>
           <h3>Your Upcoming Trips</h3>
-          <section className="displayNextTrips">
-            {/* dynamic display */}
-          </section>
+          <section className="displayNextTrips"></section>
         </div>
       </main>
       <Footer />
