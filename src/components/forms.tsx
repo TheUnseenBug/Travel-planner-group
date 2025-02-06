@@ -48,7 +48,7 @@ const Forms: FC<props> = ({ trip }) => {
     event.preventDefault();
     if (destination && date && fields.length > 0) {
       const newTrip = {
-        id: trip ? trip.id : Math.random().toString(),
+        id: trip ? trip.id : Math.floor(Math.random() * 10000).toString(),
         city: destination,
         date: date,
         activities: fields,
