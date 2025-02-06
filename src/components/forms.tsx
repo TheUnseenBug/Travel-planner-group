@@ -59,6 +59,7 @@ const Forms: FC<props> = ({ setOpen, trip, editTrip }) => {
         editTrip(newTrip);
       }
       if (addTrip) {
+        console.log("adding trip");
         dispatch(addTrip(newTrip));
       }
 
