@@ -1,6 +1,11 @@
+import { useSelector } from "react-redux";
 import Footer from "../components/nav/Footer";
+import { RootState } from "../types/trip";
+
 
 function Home() {
+  const trips = useSelector((state: RootState) => state.trip.trips);
+  console.log(trips);
   return (
     <>
       <main className="m-5 h-screen">
@@ -8,9 +13,7 @@ function Home() {
         <h2 className="m-5">Är du redo att planera din nästa drömresa?</h2>
         <div>
           <h3 className="text-xl underline">Kommande Resor</h3>
-          <section className="displayNextTrips">
-            {/* dynamic display */}
-          </section>
+          <section className="displayNextTrips"></section>
         </div>
       </main>
       <Footer />

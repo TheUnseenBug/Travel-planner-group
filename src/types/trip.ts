@@ -5,11 +5,12 @@ export interface Trip {
   city: string;
   image?: string;
 }
+export interface TripState {
+  trips: Trip[];
+}
 
-export interface TripStore {
-  Trips: Trip[];
-  addTrip: (Trip: Trip) => void;
-  removeTrip: (id: string) => void;
-  editTrip: (Trip: Trip) => void;
-  getTrip: (id: string ) => Trip | undefined;
+export interface RootState {
+  trip : {
+    trips: Trip[];
+  }
 }
