@@ -9,7 +9,6 @@ import {
 import clsx from "clsx";
 import { FC, useEffect, useState } from "react";
 import Button from "./button";
-//Oklar error?
 import { Trip } from "../types/trip";
 import { useDispatch } from "react-redux";
 import { addTrip } from "../helpers/trip";
@@ -17,6 +16,7 @@ import { addTrip } from "../helpers/trip";
 interface props {
   trip?: Trip | undefined;
 }
+
 //props för att kontrollera när modal ska öppnas och hantera Trip i store
 const Forms: FC<props> = ({ trip }) => {
   const [destination, setDestination] = useState(trip?.city || "");
