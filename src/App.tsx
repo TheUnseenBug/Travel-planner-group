@@ -20,7 +20,6 @@ const router = createBrowserRouter(
     <Route path="/" element={<NavLayout />}>
       <Route index element={<Home />} />
       <Route path="AddTrip" element={<AddTrip />} />
-
       {/* FIX ME */}
       {/* <Route path=":id" element={<TripDetails />} loader={tripDetailsLoader} /> */}
 

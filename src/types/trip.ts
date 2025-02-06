@@ -7,9 +7,12 @@ export interface Trip {
 }
 
 export interface TripStore {
-  Trips: Trip[];
   addTrip: (Trip: Trip) => void;
   removeTrip: (id: string) => void;
   editTrip: (Trip: Trip) => void;
   getTrip: (id: string ) => Trip | undefined;
+}
+
+export interface TripState {
+  trips: Trip[];
 }
