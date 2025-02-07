@@ -2,6 +2,7 @@ import Map from "../components/map/MapComponent.tsx";
 import { useParams } from "react-router-dom";
 import { RootState, Trip } from "../types/types.ts";
 import { useSelector } from "react-redux";
+import TripImage from "../components/TripImage/TripImage";
 
 const TripDetails: React.FC = () => {
   // Hämta ut id:t från URL-parametrarna
@@ -18,8 +19,9 @@ const TripDetails: React.FC = () => {
 
   return (
     <>
-      <div className="bg-white shadow rounded">
+      <div>
         <h2 className="text-2xl font-bold mb-2">{trip.city}</h2>
+        <TripImage city={trip.city} />
         <p className="text-gray-600 mb-2">{trip.date}</p>
 
         {trip.activities && trip.activities.length > 0 && (
