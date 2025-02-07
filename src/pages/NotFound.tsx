@@ -2,12 +2,18 @@ import { NavLink } from "react-router-dom";
 
 export default function NotFound() {
   return (
-    <div className="not-found">
-      <h2>Hoppsan! Sidan hittades inte.</h2>
+    <main className="m-5 h-screen flex justify-start items-center flex-col z-2 relative">
+      <h2 className="m-5 text-2xl italic text-black">
+        Hoppsan! Sidan hittades inte.
+      </h2>
 
-      <p>
-        Gå tillbaka till <NavLink to="/">hem</NavLink>.
+      <p className="p-2 text-black font-bold">
+        Gå tillbaka till{" "}
+        <NavLink to="/" className="underline text-blue-500 hover:text-black">
+          hem
+        </NavLink>
+        .
       </p>
-    </div>
+    </main>
   );
 }

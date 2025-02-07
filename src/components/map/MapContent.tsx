@@ -32,11 +32,11 @@ const MapContent: FC<MapContentProps> = ({ city }) => {
           });
           setError(null);
         } else {
-          setError("Location not found!");
+          setError("Hittade inte platsen på kartan :(");
           setLocation(null);
         }
       } catch (error) {
-        setError("Error searching location");
+        setError("Error! Kunde inte ladda kartan.");
         setLocation(null);
       }
     };
@@ -55,7 +55,7 @@ const MapContent: FC<MapContentProps> = ({ city }) => {
           alignItems: "center",
         }}
       >
-        {error || "Loading map..."}
+        {error || "Laddar kartan..."}
       </div>
     );
   }

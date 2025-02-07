@@ -7,7 +7,7 @@ import {
   Legend,
 } from "@headlessui/react";
 import clsx from "clsx";
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, useRef } from "react";
 import Button from "./button";
 import { RootState, Trip } from "../types/types";
 import { useDispatch } from "react-redux";
@@ -20,11 +20,20 @@ interface props {
   trip?: Trip | undefined;
 }
 
+interface AutocompleteResult {
+  display_name: string;
+}
+
 //props för att kontrollera när modal ska öppnas och hantera Trip i store
 const Forms: FC<props> = ({ trip }) => {
   const [destination, setDestination] = useState(trip?.city || "");
   const [date, setDate] = useState(trip?.date || "");
   const [fields, setFields] = useState<string[]>(trip?.activities || [""]);
+  const [autocompleteResults, setAutocompleteResults] = useState<
+    AutocompleteResult[]
+  >([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dispatch = useDispatch();
 
   const notification = useSelector(
@@ -49,6 +58,44 @@ const Forms: FC<props> = ({ trip }) => {
     setDate(trip?.date || "");
     setFields(trip?.activities || [""]);
   }, [trip]);
+
+  const fetchAutocompleteResults = async (value: string) => {
+    if (value.length > 2) {
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?q=${value}&format=json&limit=5`
+        );
+        const data: AutocompleteResult[] = await response.json();
+        setAutocompleteResults(data);
+      } catch (error) {
+        console.error("Error fetching autocomplete suggestions:", error);
+        setAutocompleteResults([]);
+      }
+    } else {
+      setAutocompleteResults([]);
+    }
+  };
+
+  const handleDestinationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setDestination(value);
+
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      fetchAutocompleteResults(value);
+    }, 200);
+  };
+
+  const handleSelectDestination = (selectedDestination: string) => {
+    setDestination(selectedDestination);
+    setAutocompleteResults([]);
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
 
   //Funktion för att spara eller redigera Trip
   const handleSubmit = (event: React.FormEvent) => {
@@ -89,8 +136,9 @@ const Forms: FC<props> = ({ trip }) => {
             Destination
           </Label>
           <Input
+            ref={inputRef}
             value={destination}
-            onChange={(e) => setDestination(e.target.value)}
+            onChange={handleDestinationChange}
             required
             onInvalid={(e) =>
               (e.target as HTMLInputElement).setCustomValidity(
@@ -105,6 +153,21 @@ const Forms: FC<props> = ({ trip }) => {
               "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
             )}
           />
+          {autocompleteResults.length > 0 && (
+            <div className="absolute z-10">
+              <ul className="mt-1 w-max bg-white border border-gray-300 rounded-md shadow-lg max-h-48 overflow-y-auto">
+                {autocompleteResults.map((result, index) => (
+                  <li
+                    key={index}
+                    className="py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => handleSelectDestination(result.display_name)}
+                  >
+                    {result.display_name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </Field>
         <Field>
           <Label className="font-medium text-white text-sm/6">Date</Label>
