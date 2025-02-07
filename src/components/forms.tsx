@@ -61,7 +61,9 @@ const Forms: FC<props> = ({ trip }) => {
       };
 
       if (addTrip) {
-        dispatch(showNotification({ message: "hello", visible: true }));
+        dispatch(
+          showNotification({ message: "Vacation plan added!", visible: true })
+        );
         dispatch(addTrip(newTrip));
       }
     } else {
