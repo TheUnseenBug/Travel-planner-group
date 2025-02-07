@@ -32,7 +32,7 @@ const TripDetails: React.FC = () => {
             </ul>
           </div>
         )}
-        <Map />
+        <Map city={trip.city} />
       </div>
     </>
   );
