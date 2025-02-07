@@ -9,9 +9,12 @@ import {
 import clsx from "clsx";
 import { FC, useEffect, useState } from "react";
 import Button from "./button";
-import { Trip } from "../types/trip";
+import { RootState, Trip } from "../types/types";
 import { useDispatch } from "react-redux";
 import { addTrip } from "../helpers/trip";
+import NotificationBox from "./notification-box";
+import { showNotification } from "../helpers/notif";
+import { useSelector } from "react-redux";
 
 interface props {
   trip?: Trip | undefined;
@@ -24,6 +27,9 @@ const Forms: FC<props> = ({ trip }) => {
   const [fields, setFields] = useState<string[]>(trip?.activities || [""]);
   const dispatch = useDispatch();
 
+  const notification = useSelector(
+    (state: RootState) => state.notif.notification
+  );
   //Funktioner för att lägga till aktiviteter
   const handleAddField = () => {
     setFields([...fields, ""]);
@@ -55,6 +61,7 @@ const Forms: FC<props> = ({ trip }) => {
       };
 
       if (addTrip) {
+        dispatch(showNotification({ message: "hello", visible: true }));
         dispatch(addTrip(newTrip));
       }
     } else {
@@ -64,6 +71,10 @@ const Forms: FC<props> = ({ trip }) => {
 
   return (
     <form onSubmit={handleSubmit} className="w-full max-w-lg px-4 bg-slate-700">
+      <NotificationBox
+        message={notification.message}
+        visible={notification.visible}
+      />
       <Fieldset className="p-6 space-y-6 rounded-xl bg-white/5 sm:p-10">
         <Legend className="font-semibold text-white text-base/7">
           {trip ? "Edit" : "Add"} travel plans for your next trip

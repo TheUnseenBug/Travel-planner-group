@@ -5,12 +5,20 @@ export interface Trip {
   city: string;
   image?: string;
 }
+
+export interface Notification {
+  message: string;
+  visible: boolean;
+}
 export interface TripState {
   trips: Trip[];
 }
 
 export interface RootState {
-  trip : {
+  trip: {
     trips: Trip[];
-  }
+  };
+  notif: {
+    notification: Notification;
+  };
 }

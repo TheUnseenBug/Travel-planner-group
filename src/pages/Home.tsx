@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import Footer from "../components/nav/Footer";
-import { RootState } from "../types/trip";
+import { RootState } from "../types/types";
 import RotatingBackground from "../components/RotatingBackground";
 import TripList from "../components/TripList";
 import { Link } from "react-router-dom";

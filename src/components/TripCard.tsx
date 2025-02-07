@@ -1,4 +1,4 @@
-import { Trip } from "../types/trip.ts";
+import { Trip } from "../types/types.ts";
 import { Link } from "react-router-dom";
 import myImg from "../assets/myImg.jpg";
 

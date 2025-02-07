@@ -1,5 +1,5 @@
 import TripCard from "./TripCard";
-import { Trip } from "../types/trip.ts";
+import { Trip } from "../types/types.ts";
 
 interface TripListProps {
   trips: Trip[];
