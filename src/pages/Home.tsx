@@ -14,8 +14,11 @@ function Home() {
     new Date(a.date).getTime() - new Date(b.date).getTime()
   );
 
-  // Get the most recent trip
-  const mostRecentTrip = sortedTrips.length > 0 ? sortedTrips[0] : null;
+  // // Get the most recent trip
+  // const mostRecentTrip = sortedTrips.length > 0 ? sortedTrips[0] : null;
+    // Get the three most recent trips
+    const recentTrips = sortedTrips.slice(0, 3);
+    const remainingTrips = sortedTrips.slice(3);
 
   console.log(trips);
   return (
@@ -33,23 +36,27 @@ function Home() {
               <TripList trips={trips} />
             </section>
           </div> */}
-          {/* Show most recent trip */}
-          <div className="mt-5 w-full flex justify-center">
-            {mostRecentTrip ? (
-              <div className="w-full md:w-1/2">
-                <h3 className="text-4xl font-mono text-white text-center">Din nästa resa</h3>
-                <TripCard trip={mostRecentTrip} />
-              </div>
+           {/* Show the three most recent trips */}
+           <div className="mt-5 w-full flex flex-col items-center">
+            {recentTrips.length > 0 ? (
+              <>
+                <h3 className="text-4xl font-mono text-white text-center mb-3">Dina nästa resor</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {recentTrips.map((trip) => (
+                    <TripCard key={trip.id} trip={trip} />
+                  ))}
+                </div>
+              </>
             ) : (
               <p className="text-white text-lg">Du har inga resor inplanerade.</p>
             )}
           </div>
 
-          {/* Show list of upcoming trips */}
-          {sortedTrips.length > 1 && (
-            <div className="mt-5">
-              <h3 className="text-4xl font-mono text-white">Kommande Resor</h3>
-              <TripList trips={sortedTrips.slice(1)} /> {/* Exclude the first trip */}
+          {/* Show remaining upcoming trips */}
+          {remainingTrips.length > 0 && (
+            <div className="mt-10">
+              <h3 className="text-4xl font-mono text-white">Fler kommande resor</h3>
+              <TripList trips={remainingTrips} />
             </div>
           )}
         </main>
