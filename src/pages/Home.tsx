@@ -18,7 +18,7 @@ function Home() {
             Lägg till ny resa
           </Link>
           <div>
-            <h3 className="text-4xl ">Kommande Resor</h3>
+            <h3 className="text-4xl font-mono">Kommande Resor</h3>
             <section className="displayNextTrips">
               <TripList trips={trips} />
             </section>

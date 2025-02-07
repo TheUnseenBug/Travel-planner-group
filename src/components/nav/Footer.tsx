@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <>
-      <footer className="bg-gray-500 h-16 flex justify-center items-center">
+      <footer className="bg-gray-400 h-16 flex justify-center items-center font-mono">
         <nav className="navBar">
           <ul className="navList">
             <Link className="p-2 hover:text-white font-bold" to="/">
