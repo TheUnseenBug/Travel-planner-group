@@ -11,14 +11,14 @@ function Home() {
   return (
     <>
       <RotatingBackground>
-        <main className="m-5 h-screen flex justify-start items-center flex-col">
-          <h1 className="text-6xl m-5">Reseplaneraren</h1>
-          <h2 className="m-5 text-2xl italic">Är du redo att planera din nästa drömresa?</h2>
-          <Link className="p-2 hover:text-white font-bold" to="/AddTrip">
+        <main className="m-5 h-screen flex justify-start items-center flex-col z-2 relative">
+          <h1 className="text-6xl m-5 text-white">Reseplaneraren</h1>
+          <h2 className="m-5 text-2xl italic text-white">Är du redo att planera din nästa drömresa?</h2>
+          <Link className="p-2 hover:underline text-white font-bold" to="/AddTrip">
             Lägg till ny resa
           </Link>
           <div>
-            <h3 className="text-4xl font-mono">Kommande Resor</h3>
+            <h3 className="text-4xl font-mono text-white">Kommande Resor</h3>
             <section className="displayNextTrips">
               <TripList trips={trips} />
             </section>

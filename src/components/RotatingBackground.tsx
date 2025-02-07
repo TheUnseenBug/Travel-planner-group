@@ -24,7 +24,6 @@ interface RotatingBackgroundProps {
         return () => clearTimeout(timer); // Cleanup on unmount
     }, [currentIndex, images.length]); // Depend on currentIndex
 
-    console.log('background here!');
     return (
         <div className='backgroundContainer'>
             <div
