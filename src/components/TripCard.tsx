@@ -16,6 +16,7 @@ const TripCard: React.FC<TripCardProps> = ({ trip }) => {
         <h2 className="text-white text-center text-2xl font-bold mb-2">
           {trip.city}
         </h2>
+
         <img
           className="scale-down rounded-2xl mb-2"
           src={myImg}
