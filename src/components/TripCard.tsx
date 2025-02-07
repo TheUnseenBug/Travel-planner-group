@@ -8,26 +8,21 @@ interface TripCardProps {
 
 const TripCard: React.FC<TripCardProps> = ({ trip }) => {
   return (
-    <Link to={`/trips/${trip.id}`} className="block z-10">
-      <div className="bg-white shadow rounded p-4 mb-4">
-        <h2 className="text-2xl font-bold mb-2">{trip.city}</h2>
+    <Link to={`/trips/${trip.id}`} className="block z-50">
+      <div
+        className="bg-gray-400 shadow rounded-3xl
+ p-4 mb-4 size-80 border-4 border-white"
+      >
+        <h2 className="text-white text-center text-2xl font-bold mb-2">
+          {trip.city}
+        </h2>
+
         <img
-          className="object-fit: scale-down"
+          className="scale-down rounded-2xl mb-2"
           src={myImg}
           alt="Bild från staden du ska besöka"
         />
-        <p className="text-gray-600 mb-2">{trip.date}</p>
-
-        {trip.activities && trip.activities.length > 0 && (
-          <div className="mt-2">
-            <p className="font-semibold">Activities:</p>
-            <ul className="list-disc list-inside">
-              {trip.activities.map((activity, index) => (
-                <li key={index}>{activity}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <p className="text-gray-600 mb-2 text-center">{trip.date}</p>
       </div>
     </Link>
   );
