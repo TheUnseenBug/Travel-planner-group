@@ -1,13 +1,12 @@
 import { Outlet, NavLink } from "react-router-dom";
 export default function RootLayout() {
   return (
-    <div className="nav-layout w-full">
-      <nav className=" bg-blue-400 p-2 text-white font-bold ">
-        <h1>Reseplaneraren</h1>
-        <ul className="flex justify-center gap-4">
-          <NavLink to="/">Hem</NavLink>
-          <NavLink to="AddTrip">Lägg till ny resa</NavLink>
-          <NavLink to="Trips">Dina resor</NavLink>
+    <div className="nav-layout w-full font-mono ">
+      <nav className="bg-gray-600 p-2 text-white font-bold relative flex items-center ">
+        <NavLink to="/"><h1 className="text-2xl p-2 mx-1 hover:underline">Reseplaneraren</h1></NavLink>
+        <ul className="flex justify-end gap-4">
+          <NavLink to="AddTrip" className="hover:underline">Lägg till ny resa</NavLink>
+          <NavLink to="Trips" className="hover:underline">Dina resor</NavLink>
         </ul>
       </nav>
 
