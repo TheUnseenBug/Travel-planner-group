@@ -8,7 +8,7 @@ interface TripCardProps {
 
 const TripCard: React.FC<TripCardProps> = ({ trip }) => {
   return (
-    <Link to={`/trips/${trip.id}`} className="block">
+    <Link to={`/trips/${trip.id}`} className="block z-10">
       <div className="bg-white shadow rounded p-4 mb-4">
         <h2 className="text-2xl font-bold mb-2">{trip.city}</h2>
         <img
