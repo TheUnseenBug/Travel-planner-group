@@ -14,6 +14,7 @@ interface MapContentProps {
 
 const MapContent: FC<MapContentProps> = ({ city }) => {
   const [location, setLocation] = useState<Location | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchLocation = async () => {
@@ -29,18 +30,35 @@ const MapContent: FC<MapContentProps> = ({ city }) => {
             lng: parseFloat(data[0].lon),
             name: data[0].display_name,
           });
+          setError(null);
         } else {
-          console.error("Location not found!");
+          setError("Location not found!");
+          setLocation(null);
         }
       } catch (error) {
-        console.error("Error searching location:", error);
+        setError("Error searching location");
+        setLocation(null);
       }
     };
 
     fetchLocation();
   }, [city]);
 
-  if (!location) return <div>Loading map...</div>;
+  if (!location) {
+    return (
+      <div
+        className="loading-map"
+        style={{
+          color: "black",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {error || "Loading map..."}
+      </div>
+    );
+  }
 
   return (
     <div
