@@ -1,65 +1,35 @@
-import { FC } from "react";
-import { Trip } from "../types/trip";
-import Button from "./button.tsx";
+import { Trip } from "../types/trip.ts";
+import { Link } from "react-router-dom";
+import myImg from "../assets/myImg.jpg";
 
 interface TripCardProps {
   trip: Trip;
-  onEdit?: (trip: Trip) => void;
-  onDelete?: (id: string) => void;
 }
 
-// Mock data for testing
-const mockTrips: Trip[] = [
-  {
-    id: "1",
-    city: "Paris",
-    date: "2025-04-10",
-    activities: [
-      "Visit Eiffel Tower",
-      "Explore Louvre Museum",
-      "Walk along the Seine",
-    ],
-  },
-  {
-    id: "2",
-    city: "Tokyo",
-    date: "2025-06-15",
-    activities: [
-      "Visit Shibuya",
-      "Try sushi at Tsukiji Market",
-      "Explore Akihabara",
-    ],
-  },
-  {
-    id: "3",
-    city: "New York",
-    date: "2025-09-22",
-    activities: [
-      "Walk in Central Park",
-      "Visit Times Square",
-      "See a Broadway show",
-    ],
-  },
-];
-
-const TripCard: FC<TripCardProps> = ({ trip, onEdit, onDelete }) => {
+const TripCard: React.FC<TripCardProps> = ({ trip }) => {
   return (
-    <div className="p-4 bg-white/5 rounded-xl shadow-md text-white w-full max-w-md">
-      <h2 className="text-lg font-semibold">{trip.city}</h2>
-      <p className="text-sm text-white/70">{trip.date}</p>
-      <div className="mt-2">
-        <h3 className="text-sm font-medium">Activities:</h3>
-        <ul className="list-disc list-inside text-white/80">
-          {trip.activities.map((activity, index) => (
-            <li key={index}>{activity}</li>
-          ))}
-        </ul>
+    <Link to={`/trips/${trip.id}`} className="block">
+      <div className="bg-white shadow rounded p-4 mb-4">
+        <h2 className="text-2xl font-bold mb-2">{trip.city}</h2>
+        <img
+          className="object-fit: scale-down"
+          src={myImg}
+          alt="Bild från staden du ska besöka"
+        />
+        <p className="text-gray-600 mb-2">{trip.date}</p>
+
+        {trip.activities && trip.activities.length > 0 && (
+          <div className="mt-2">
+            <p className="font-semibold">Activities:</p>
+            <ul className="list-disc list-inside">
+              {trip.activities.map((activity, index) => (
+                <li key={index}>{activity}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
-      <div className="mt-4 flex justify-between">
-        {onEdit && <Button text="Edit" onClick={() => onEdit(trip)} />}
-        {onDelete && <Button text="Delete" onClick={() => onDelete(trip.id)} />}
-      </div>
-    </div>
+    </Link>
   );
 };
 

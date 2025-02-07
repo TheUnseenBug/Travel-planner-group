@@ -1,20 +1,20 @@
-import { FC } from "react";
 import TripCard from "./TripCard";
-import mockTrips from "./TripCard";
+import { Trip } from "../types/trip.ts";
 
-interface TripCardProps {
-  trip: Trip;
-  onEdit?: (trip: Trip) => void;
-  onDelete?: (id: string) => void;
+interface TripListProps {
+  trips: Trip[];
 }
 
-const TripList: FC = () => {
+const TripList: React.FC<TripListProps> = ({ trips }) => {
+  if (!trips) {
+    return <div className="text-white p-4">Du har inga resor inplanerade.</div>;
+  }
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-      {mockTrips.map((trip) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {trips.map((trip) => (
         <TripCard key={trip.id} trip={trip} />
       ))}
-    </section>
+    </div>
   );
 };
 

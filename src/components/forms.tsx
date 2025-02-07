@@ -9,7 +9,6 @@ import {
 import clsx from "clsx";
 import { FC, useEffect, useState } from "react";
 import Button from "./button";
-//Oklar error?
 import { Trip } from "../types/trip";
 import { useDispatch } from "react-redux";
 import { addTrip } from "../helpers/trip";
@@ -17,6 +16,7 @@ import { addTrip } from "../helpers/trip";
 interface props {
   trip?: Trip | undefined;
 }
+
 //props för att kontrollera när modal ska öppnas och hantera Trip i store
 const Forms: FC<props> = ({ trip }) => {
   const [destination, setDestination] = useState(trip?.city || "");
@@ -48,7 +48,7 @@ const Forms: FC<props> = ({ trip }) => {
     event.preventDefault();
     if (destination && date && fields.length > 0) {
       const newTrip = {
-        id: trip ? trip.id : Math.random().toString(),
+        id: trip ? trip.id : Math.floor(Math.random() * 10000).toString(),
         city: destination,
         date: date,
         activities: fields,

@@ -7,7 +7,7 @@ export default function RootLayout() {
         <ul className="flex justify-center gap-4">
           <NavLink to="/">Hem</NavLink>
           <NavLink to="AddTrip">Lägg till ny resa</NavLink>
-          <NavLink to="TripDetails">Detaljer</NavLink>
+          <NavLink to="Trips">Dina resor</NavLink>
         </ul>
       </nav>
 
