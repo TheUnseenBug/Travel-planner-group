@@ -34,16 +34,3 @@ const RotatingBackground: React.FC<RotatingBackgroundProps> = ({
 };
 
 export default RotatingBackground;
-
-    return (
-        <div className='backgroundContainer'>
-            <div
-                className='backgroundImg'
-                style={{ backgroundImage: images[currentIndex] }}>
-            </div>
-            {children}
-        </div>
-      );
-    };
-
-    export default RotatingBackground; 
