@@ -1,12 +1,15 @@
 import { FC, Suspense, lazy } from "react";
 
-// Lazy load the map-related components
+interface MapProps {
+  city: string;
+}
+
 const LazyMap = lazy(() => import("./MapContent"));
 
-const Map: FC = () => {
+const Map: FC<MapProps> = ({ city }) => {
   return (
     <Suspense fallback={<div>Loading map...</div>}>
-      <LazyMap />
+      <LazyMap city={city} />
     </Suspense>
   );
 };
