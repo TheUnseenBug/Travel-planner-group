@@ -11,8 +11,8 @@ const TripList: React.FC<TripListProps> = ({ trips }) => {
   }
   return (
     <>
-      <h2>Dina resor</h2>
-      <div className="flex flex-wrap col-end-4 gap-3">
+      <h2 className="text-center text-5xl m-5 underline">Dina resor</h2>
+      <div className="flex flex-wrap col-end-4 gap-3 justify-center left">
         {trips.map((trip) => (
           <TripCard key={trip.id} trip={trip} />
         ))}
