@@ -1,6 +1,6 @@
 import Map from "../components/map/MapComponent.tsx";
 import { useParams } from "react-router-dom";
-import { RootState, Trip } from "../types/trip";
+import { RootState, Trip } from "../types/types.ts";
 import { useSelector } from "react-redux";
 import TripImage from "../components/TripImage/TripImage";
 

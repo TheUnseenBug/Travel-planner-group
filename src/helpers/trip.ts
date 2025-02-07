@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Trip } from '../types/trip';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Trip } from "../types/types";
 
 interface TripState {
   trips: Trip[];
@@ -10,24 +10,26 @@ const initialState: TripState = {
 };
 
 export const tripSlice = createSlice({
-  name: 'trip',
+  name: "trip",
   initialState,
   reducers: {
     //Lägger till resa, state är det som är sparat, action.payload är resan som matas in.
     addTrip: (state: TripState, action: PayloadAction<Trip>) => {
-      state.trips = [...state.trips, action.payload];
+      state.trips.push(action.payload);
     },
     //Redigerar resa
-    editTrip: (state:TripState, action: PayloadAction<Trip>) => {
-     state.trips.map((t) => t.id === action.payload.id ? {...t, ...action.payload} : t)
+    editTrip: (state: TripState, action: PayloadAction<Trip>) => {
+      state.trips.map((t) =>
+        t.id === action.payload.id ? { ...t, ...action.payload } : t
+      );
     },
     //Tar bort resa
-    removeTrip: (state:TripState, action: PayloadAction<Trip>) => {
-      state.trips = state.trips.filter((t) => t.id !== action.payload.id)
+    removeTrip: (state: TripState, action: PayloadAction<Trip>) => {
+      state.trips = state.trips.filter((t) => t.id !== action.payload.id);
     },
   },
 });
 
-export const { addTrip } = tripSlice.actions;
+export const { addTrip, editTrip, removeTrip } = tripSlice.actions;
 
 export default tripSlice.reducer;

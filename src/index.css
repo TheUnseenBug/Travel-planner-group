@@ -13,6 +13,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background-color: #464647;
 }
 
 .backgroundImg {
@@ -24,5 +25,5 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-size: cover;
   background-position: center;
   transition: background-image 1s ease-in-out; 
-  opacity: 30%;/* Optional for smooth transition */
+  opacity: 25%;
 }
