@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Trip } from "../types/trip";
+import { Trip } from "../types/types";
 
 interface TripState {
   trips: Trip[];
@@ -19,8 +19,8 @@ export const tripSlice = createSlice({
     },
     //Redigerar resa
     editTrip: (state: TripState, action: PayloadAction<Trip>) => {
-      state.trips = state.trips.map((t) =>
-        t.id === action.payload.id ? action.payload : t
+      state.trips.map((t) =>
+        t.id === action.payload.id ? { ...t, ...action.payload } : t
       );
     },
     //Tar bort resa
