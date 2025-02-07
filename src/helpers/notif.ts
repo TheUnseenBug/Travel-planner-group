@@ -23,11 +23,7 @@ export const notificationSlice = createSlice({
       state.notification.message = action.payload.message;
       state.notification.visible = true;
     },
-    hideNotification: (
-      state: NotificationState,
-      action: PayloadAction<Notification>
-    ) => {
-      state.notification.message = action.payload.message;
+    hideNotification: (state: NotificationState) => {
       state.notification.visible = false;
     },
   },
