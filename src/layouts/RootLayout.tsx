@@ -1,18 +1,39 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, Link } from "react-router-dom";
+import React, { useState } from "react";
+import "../components/nav/Navbar.css";
+
 export default function RootLayout() {
   return (
-    <div className="nav-layout w-full font-mono ">
-      <nav className="bg-gray-600 p-2 text-white font-bold relative flex items-center ">
-        <NavLink to="/"><h1 className="text-2xl p-2 mx-1 hover:underline">Reseplaneraren</h1></NavLink>
-        <ul className="flex justify-end gap-4">
-          <NavLink to="AddTrip" className="hover:underline">Lägg till ny resa</NavLink>
-          <NavLink to="Trips" className="hover:underline">Dina resor</NavLink>
-        </ul>
-      </nav>
-
+    <div className="nav-layout w-full font-mono">
+      <Navbar />
       <main>
         <Outlet />
       </main>
     </div>
   );
 }
+
+export const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  return (
+    <nav>
+          <Link to="/" className="title">
+          Reseplaneraren
+          </Link>
+          <div className="menu" onClick={() => setMenuOpen(!menuOpen)}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <ul className={menuOpen ? "open" : ""}>
+            <li>
+              <NavLink to="/AddTrip">Lägg till ny resa</NavLink>
+            </li>
+            <li>
+              <NavLink to="/Trips">Dina resor</NavLink>
+            </li>
+          </ul>
+        </nav>
+  );
+};
