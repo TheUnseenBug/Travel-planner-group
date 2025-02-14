@@ -11,13 +11,15 @@ import { FC, useEffect, useState, useRef } from "react";
 import Button from "./button";
 import { RootState, Trip } from "../types/types";
 import { useDispatch } from "react-redux";
-import { addTrip } from "../helpers/trip";
+import { addTrip, editTrip } from "../helpers/trip";
 import NotificationBox from "./notification-box";
 import { showNotification } from "../helpers/notif";
 import { useSelector } from "react-redux";
 
 interface props {
   trip?: Trip | undefined;
+  type: "edit" | "add";
+  setOpenEdit?: (e: boolean) => void;
 }
 
 interface AutocompleteResult {
@@ -25,7 +27,7 @@ interface AutocompleteResult {
 }
 
 //props för att kontrollera när modal ska öppnas och hantera Trip i store
-const Forms: FC<props> = ({ trip }) => {
+const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
   const [destination, setDestination] = useState(trip?.city || "");
   const [date, setDate] = useState(trip?.date || "");
   const [fields, setFields] = useState<string[]>(trip?.activities || [""]);
@@ -53,11 +55,13 @@ const Forms: FC<props> = ({ trip }) => {
   };
 
   //Om Trip finns så uppdaterar vi formuläret med data
-  useEffect(() => {
-    setDestination(trip?.city || "");
-    setDate(trip?.date || "");
-    setFields(trip?.activities || [""]);
-  }, [trip]);
+  type === "edit"
+    ? useEffect(() => {
+        setDestination(trip?.city || "");
+        setDate(trip?.date || "");
+        setFields(trip?.activities || [""]);
+      }, [trip])
+    : null;
 
   const fetchAutocompleteResults = async (value: string) => {
     if (value.length > 2) {
@@ -118,11 +122,20 @@ const Forms: FC<props> = ({ trip }) => {
         activities: fields,
       };
 
-      if (addTrip) {
+      if (type === "add") {
         dispatch(
           showNotification({ message: "Vacation plan added!", visible: true })
         );
         dispatch(addTrip(newTrip));
+      } else if (type === "edit" && setOpenEdit) {
+        dispatch(
+          showNotification({
+            visible: true,
+            message: "Vacation plan edited",
+          })
+        );
+        dispatch(editTrip(newTrip));
+        setOpenEdit(false);
       }
     } else {
       console.log("Please fill in all fields");

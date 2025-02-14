@@ -68,7 +68,7 @@ const MapContent: FC<MapContentProps> = ({ city }) => {
         width: "400px",
         position: "absolute",
         top: "100px",
-        left: "35%",
+        left: "55%",
       }}
     >
       <MapContainer

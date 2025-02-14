@@ -4,7 +4,7 @@ export default function AddTrip() {
   return (
     <div className="add-trip">
       <h1>Lägg till en ny resa</h1>
-      <Forms />
+      <Forms type="add" />
     </div>
   );
 }
