@@ -2,6 +2,15 @@
     background-color: #1d4ed8;
 }
 
+.footerBody {
+    background-color: #0f172a;
+    min-width: 100%;
+}
+
+.madeBy {
+    justify-content: flex-end;
+}
+
 nav {
     display: flex;
     justify-content: space-between;
