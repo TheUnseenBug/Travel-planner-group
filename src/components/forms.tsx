@@ -76,6 +76,16 @@ const Forms: FC<props> = ({ trip }) => {
     }
   };
 
+  function extractFirstPart(str: string) {
+    const commaIndex = str.indexOf(",");
+    if (commaIndex === -1) {
+      // If there's no comma, return the whole string
+      return str;
+    } else {
+      return str.substring(0, commaIndex);
+    }
+  }
+
   const handleDestinationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setDestination(value);
@@ -103,7 +113,7 @@ const Forms: FC<props> = ({ trip }) => {
     if (destination && date && fields.length > 0) {
       const newTrip = {
         id: trip ? trip.id : Math.floor(Math.random() * 10000).toString(),
-        city: destination,
+        city: extractFirstPart(destination),
         date: date,
         activities: fields,
       };
