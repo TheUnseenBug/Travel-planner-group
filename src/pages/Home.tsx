@@ -1,8 +1,6 @@
 import { useSelector } from "react-redux";
 import Footer from "../components/nav/Footer";
 import { RootState } from "../types/types";
-// import RotatingBackground from "../components/RotatingBackground";
-import TripList from "../components/TripList";
 import TripCard from "../components/TripCard";
 import { Link } from "react-router-dom";
 
@@ -15,11 +13,8 @@ function Home() {
       new Date(a.date).getTime() - new Date(b.date).getTime()
   );
 
-  // // Get the most recent trip
-  // const mostRecentTrip = sortedTrips.length > 0 ? sortedTrips[0] : null;
-  // Get the three most recent trips
-  const recentTrips = sortedTrips.slice(0, 3);
-  const remainingTrips = sortedTrips.slice(3);
+    // Get the three most recent trips
+    const recentTrips = sortedTrips.slice(0, 3);
 
   console.log(trips);
   return (
