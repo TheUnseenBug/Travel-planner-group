@@ -124,7 +124,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
 
       if (type === "add") {
         dispatch(
-          showNotification({ message: "Vacation plan added!", visible: true })
+          showNotification({ message: "Resan är sparad!", visible: true })
         );
         dispatch(addTrip(newTrip));
       } else if (type === "edit" && setOpenEdit) {
@@ -138,12 +138,16 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
         setOpenEdit(false);
       }
     } else {
-      console.log("Please fill in all fields");
+      console.log("Fyll i alla fält!");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg px-4 bg-slate-700">
+    <form
+      onSubmit={handleSubmit}
+      className="w-auto h-full px-4 bg-gray-400 shadow rounded-2xl
+ p-5 mb-4 border-2 border-white z-10"
+    >
       {notification ? (
         <NotificationBox
           message={notification.message}
@@ -152,7 +156,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
       ) : null}
       <Fieldset className="p-6 space-y-6 rounded-xl bg-white/5 sm:p-10">
         <Legend className="font-semibold text-white text-base/7">
-          {trip ? "Edit" : "Add"} travel plans for your next trip
+          {trip ? "Redigera" : "Lägg till"} planer för din nästa resa.
         </Legend>
         <Field>
           <Label className="font-medium text-white text-sm/6">
@@ -165,7 +169,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
             required
             onInvalid={(e) =>
               (e.target as HTMLInputElement).setCustomValidity(
-                "Please enter a destination"
+                "Ange en destination."
               )
             }
             onInput={(e) =>
@@ -177,7 +181,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
             )}
           />
           {autocompleteResults.length > 0 && (
-            <div className="absolute z-10">
+            <div className="absolute z-5">
               <ul className="mt-1 w-max bg-white border border-gray-300 rounded-md shadow-lg max-h-48 overflow-y-auto">
                 {autocompleteResults.map((result, index) => (
                   <li
@@ -193,7 +197,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
           )}
         </Field>
         <Field>
-          <Label className="font-medium text-white text-sm/6">Date</Label>
+          <Label className="font-medium text-white text-sm/6">Datum</Label>
 
           <div className="relative">
             <Input
@@ -203,7 +207,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
               required
               onInvalid={(e) =>
                 (e.target as HTMLInputElement).setCustomValidity(
-                  "Please enter a date"
+                  "Ange datum för avfärd."
                 )
               }
               onInput={(e) =>
@@ -217,15 +221,17 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
           </div>
         </Field>
         <Field>
-          <Label className="font-medium text-white text-sm/6">Activities</Label>
+          <Label className="font-medium text-white text-sm/6">
+            Aktiviteter
+          </Label>
           <Description className="text-sm/6 text-white/50">
-            If you have more than one activity, press add more activities.
+            Här lägger du till dina aktiviteter för resan.
           </Description>
-          <Button onClick={handleAddField} text="Add more activities" />
+
           {fields.map((activity, index) => (
             <div key={index} className="relative py-3">
               <Label className="font-medium text-white text-sm/6">
-                Activity
+                Aktivitet
               </Label>
               <Input
                 value={activity}
@@ -237,7 +243,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
                 required
                 onInvalid={(e) =>
                   (e.target as HTMLInputElement).setCustomValidity(
-                    "Please enter an activity"
+                    "Ange en aktivitet."
                   )
                 }
                 onInput={(e) =>
@@ -248,12 +254,16 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
                   "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
                 )}
               />
-              <Button onClick={() => handleRemoveField(index)} text="Remove" />
+              <Button onClick={() => handleRemoveField(index)} text="Ta bort" />
             </div>
           ))}
         </Field>
+        <Button
+          onClick={handleAddField}
+          text="Lägg till ytterligare en aktivitet"
+        />
         <section className="flex justify-end gap-4">
-          <Button text={trip ? "Edit" : "Add"} type="submit" />
+          <Button text={trip ? "Redigera" : "Spara resan"} type="submit" />
         </section>
       </Fieldset>
     </form>

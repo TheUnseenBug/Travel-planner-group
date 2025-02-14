@@ -26,34 +26,37 @@ const TripDetails: React.FC = () => {
   }
 
   return (
-    <>
-      <main className="p-4">
-        <h2 className="text-2xl font-bold mb-2">{trip.city}</h2>
-        <TripImage city={trip.city} />
-        <p className="text-gray-600 mb-2">{trip.date}</p>
-        <section className="flex justify-start gap-3">
-          <Button text="Delete" onClick={() => setOpen(true)} />
-          <Button text="Edit" onClick={() => setOpenEdit(true)} />
+    <div className="">
+      <div className="h-screen flex-col justify-center content-center w-screen text-black">
+        <section className="m-2 bg-gray-100  w-96 p-3 text-opacity-100 rounded-sm">
+          <h2 className="text-2xl font-bold mb-2">{trip.city}</h2>
+          <TripImage city={trip.city} />
+          <p className="mb-2">{trip.date}</p>
+          <section className="flex justify-start gap-3">
+            <Button text="Delete" onClick={() => setOpen(true)} />
+            <Button text="Edit" onClick={() => setOpenEdit(true)} />
+          </section>
+
+          <Modal open={open} setOpen={setOpen}>
+            <Delete setOpen={setOpen} trip={trip} />
+          </Modal>
+          <Modal open={openEdit} setOpen={setOpenEdit}>
+            <Forms trip={trip} type="edit" setOpenEdit={setOpenEdit} />
+          </Modal>
+          {trip.activities && trip.activities.length > 0 && (
+            <div className="mt-2">
+              <p className="font-semibold">Aktiviteter:</p>
+              <ul className="list-disc list-inside">
+                {trip.activities.map((activity, index) => (
+                  <li key={index}>{activity}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </section>
-        <Modal open={open} setOpen={setOpen}>
-          <Delete setOpen={setOpen} trip={trip} />
-        </Modal>
-        <Modal open={openEdit} setOpen={setOpenEdit}>
-          <Forms trip={trip} type="edit" setOpenEdit={setOpenEdit} />
-        </Modal>
-        {trip.activities && trip.activities.length > 0 && (
-          <div className="mt-2">
-            <p className="font-semibold">Aktiviteter:</p>
-            <ul className="list-disc list-inside">
-              {trip.activities.map((activity, index) => (
-                <li key={index}>{activity}</li>
-              ))}
-            </ul>
-          </div>
-        )}
         <Map city={trip.city} />
-      </main>
-    </>
+      </div>
+    </div>
   );
 };
 
