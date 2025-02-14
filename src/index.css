@@ -14,7 +14,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   height: 100%;
   overflow-x: hidden;
   background-color: #464647;
-  z-index: 2;
 }
 
 .backgroundImg {
