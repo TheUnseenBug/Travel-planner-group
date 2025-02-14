@@ -13,19 +13,25 @@ export const tripSlice = createSlice({
   name: "trip",
   initialState,
   reducers: {
-    //Lägger till resa, state är det som är sparat, action.payload är resan som matas in.
+    // Lägger till resa, state är det som är sparat, action.payload är resan som matas in.
     addTrip: (state: TripState, action: PayloadAction<Trip>) => {
-      state.trips.push(action.payload);
+      state.trips.push(action.payload); // This is okay because createSlice uses Immer
     },
-    //Redigerar resa
+    // Redigerar resa
     editTrip: (state: TripState, action: PayloadAction<Trip>) => {
-      state.trips.map((t) =>
-        t.id === action.payload.id ? { ...t, ...action.payload } : t
-      );
+      return {
+        ...state,
+        trips: state.trips.map((t) =>
+          t.id === action.payload.id ? { ...t, ...action.payload } : t
+        ),
+      };
     },
-    //Tar bort resa
+    // Tar bort resa
     removeTrip: (state: TripState, action: PayloadAction<Trip>) => {
-      state.trips = state.trips.filter((t) => t.id !== action.payload.id);
+      return {
+        ...state,
+        trips: state.trips.filter((t) => t.id !== action.payload.id),
+      };
     },
   },
 });

@@ -24,7 +24,7 @@ const Delete: FC<props> = ({setOpen, trip}) => {
       <h2>Are you sure you want to permanently remove the trip</h2>
       <section className="flex justify-end gap-3 ">
         <Button text="Cancel" onClick={() => setOpen(false)} />
-        <Button text="Delete" type="submit" />
+        <Button text="Delete" className="bg-red-600" type="submit" />
       </section>
     </form>
   );
