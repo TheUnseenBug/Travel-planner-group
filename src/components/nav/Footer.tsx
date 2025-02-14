@@ -4,7 +4,7 @@ import "../nav/Navbar.css";
 export default function Footer() {
   return (
     <>
-      <footer className="footerBody h-16 flex items-center font-mono">
+      <footer className="footerBody h-16 flex items-center font-mono ">
         <nav className="navBar flex ">
           <ul className="navList">
             <Link className="p-2 hover:underline text-white" to="/">
