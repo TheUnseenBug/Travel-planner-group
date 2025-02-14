@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../types/types";
-// import TripList from "../components/TripList";
+import TripList from "../components/TripList";
 import TripCard from "../components/TripCard";
 import { Link } from "react-router-dom";
 
