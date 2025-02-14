@@ -30,12 +30,6 @@ function Home() {
           <Link className="p-2 hover:underline text-white font-bold" to="/AddTrip">
             Lägg till ny resa
           </Link>
-          {/* <div>
-            <h3 className="text-4xl font-mono text-white">Kommande Resor</h3>
-            <section className="displayNextTrips">
-              <TripList trips={trips} />
-            </section>
-          </div> */}
            {/* Show the three most recent trips */}
            <div className="mt-5 w-full flex flex-col items-center">
             {recentTrips.length > 0 ? (
@@ -51,14 +45,6 @@ function Home() {
               <p className="text-white text-lg">Du har inga resor inplanerade.</p>
             )}
           </div>
-
-          {/* Show remaining upcoming trips */}
-          {remainingTrips.length > 0 && (
-            <div className="mt-10">
-              <h3 className="text-4xl font-mono text-white">Fler kommande resor</h3>
-              <TripList trips={remainingTrips} />
-            </div>
-          )}
         </main>
       </RotatingBackground>
       <Footer />
