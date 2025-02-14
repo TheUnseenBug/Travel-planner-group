@@ -18,6 +18,7 @@ const RotatingBackground: React.FC<RotatingBackgroundProps> = ({
     const timer = setTimeout(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 10000); // Change image every 10 seconds
+    console.log(currentIndex);
 
     return () => clearTimeout(timer); // Cleanup on unmount
   }, [currentIndex, images.length]); // Depend on currentIndex
