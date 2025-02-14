@@ -33,7 +33,11 @@ const TripDetails: React.FC = () => {
           <TripImage city={trip.city} />
           <p className="mb-2">{trip.date}</p>
           <section className="flex justify-start gap-3">
-            <Button text="Delete" onClick={() => setOpen(true)} />
+            <Button
+              text="Delete"
+              className="bg-red-600"
+              onClick={() => setOpen(true)}
+            />
             <Button text="Edit" onClick={() => setOpenEdit(true)} />
           </section>
 
