@@ -18,10 +18,6 @@ export default function Footer() {
             </Link>
           </ul>
         </nav>
-        <div className="flex madeBy">
-          <p className="text-white text-xs">made by:</p>
-          <p className="text-white text-xs">Malmö grupp 3 :)</p>
-        </div>
       </footer>
     </>
   );
