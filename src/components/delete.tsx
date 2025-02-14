@@ -21,14 +21,13 @@ const Delete: FC<props> = ({setOpen, trip}) => {
     } 
   return (
     <form onSubmit={handleSubmit}>
-    <h2>text</h2>
-    <section className='flex justify-end gap-3 '>
-
-    <Button text="Cancel" onClick={() => setOpen(false)} />
-    <Button text='Delete' type='submit' />
-    </section>
+      <h2>Are you sure you want to permanently remove the trip</h2>
+      <section className="flex justify-end gap-3 ">
+        <Button text="Cancel" onClick={() => setOpen(false)} />
+        <Button text="Delete" type="submit" />
+      </section>
     </form>
-  )
+  );
 }
 
 export default Delete
