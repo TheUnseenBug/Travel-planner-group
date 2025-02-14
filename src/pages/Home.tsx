@@ -22,7 +22,7 @@ function Home() {
       <RotatingBackground>
         <main className="m-5 h-screen flex justify-start items-center flex-col z-2 relative">
           <h1 className="text-6xl m-5 text-white">Reseplaneraren</h1>
-          <h2 className="m-5 text-2xl italic text-white">Är du redo att planera din nästa drömresa?</h2>
+          <h2 className="m-5 text-2xl italic text-center text-white">Är du redo att planera din nästa drömresa?</h2>
           <Link className="p-2 hover:underline text-white font-bold" to="/AddTrip">
             Lägg till ny resa
           </Link>
