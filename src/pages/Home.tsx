@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import Footer from "../components/nav/Footer";
 import { RootState } from "../types/types";
+// import TripList from "../components/TripList";
 import TripCard from "../components/TripCard";
 import { Link } from "react-router-dom";
 
@@ -13,13 +13,12 @@ function Home() {
       new Date(a.date).getTime() - new Date(b.date).getTime()
   );
 
-    // Get the three most recent trips
-    const recentTrips = sortedTrips.slice(0, 3);
+  // Get the three most recent trips
+  const recentTrips = sortedTrips.slice(0, 3);
 
   console.log(trips);
   return (
     <>
-      {/* <RotatingBackground> */}
       <main className="m-5 h-screen flex justify-start items-center flex-col z-2 relative">
         <h1 className="text-6xl m-5 text-white">Reseplaneraren</h1>
         <h2 className="m-5 text-2xl italic text-white">
@@ -49,8 +48,6 @@ function Home() {
           )}
         </div>
       </main>
-      {/* </RotatingBackground> */}
-      <Footer />
     </>
   );
 }
