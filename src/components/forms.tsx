@@ -130,7 +130,10 @@ const Forms: FC<props> = ({ trip }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg px-4 bg-slate-700">
+    <form
+      onSubmit={handleSubmit}
+      className="w-full max-w-lg px-4 bg-slate-700 relative z-10"
+    >
       {notification ? (
         <NotificationBox
           message={notification.message}
@@ -164,7 +167,7 @@ const Forms: FC<props> = ({ trip }) => {
             )}
           />
           {autocompleteResults.length > 0 && (
-            <div className="absolute z-10">
+            <div className="absolute z-1">
               <ul className="mt-1 w-max bg-white border border-gray-300 rounded-md shadow-lg max-h-48 overflow-y-auto">
                 {autocompleteResults.map((result, index) => (
                   <li
