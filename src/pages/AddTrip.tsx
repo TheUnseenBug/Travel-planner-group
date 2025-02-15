@@ -1,4 +1,4 @@
-import Forms from "../components/forms";
+import Forms from "../components/Form/forms";
 
 export default function AddTrip() {
   return (

@@ -8,7 +8,7 @@ import Modal from "../components/modal.tsx";
 import Delete from "../components/delete.tsx";
 import { useState } from "react";
 
-import Forms from "../components/forms.tsx";
+import Forms from "../components/Form/forms.tsx";
 
 const TripDetails: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
