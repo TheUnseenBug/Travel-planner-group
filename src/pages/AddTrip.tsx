@@ -1,10 +1,9 @@
-import Forms from "../components/forms";
+import Forms from "../components/Form/forms";
 
 export default function AddTrip() {
   return (
-    <div className="add-trip flex justify-center align-center flex-col">
-      <h1>Lägg till en ny resa</h1>
-      <Forms />
-    </div>
+    <main className="m-5 h-screen flex justify-start items-center flex-col z-2 relative">
+      <Forms type="add" />
+    </main>
   );
 }

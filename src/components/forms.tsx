@@ -11,13 +11,15 @@ import { FC, useEffect, useState, useRef } from "react";
 import Button from "./button";
 import { RootState, Trip } from "../types/types";
 import { useDispatch } from "react-redux";
-import { addTrip } from "../helpers/trip";
+import { addTrip, editTrip } from "../helpers/trip";
 import NotificationBox from "./notification-box";
 import { showNotification } from "../helpers/notif";
 import { useSelector } from "react-redux";
 
 interface props {
   trip?: Trip | undefined;
+  type: "edit" | "add";
+  setOpenEdit?: (e: boolean) => void;
 }
 
 interface AutocompleteResult {
@@ -25,7 +27,7 @@ interface AutocompleteResult {
 }
 
 //props för att kontrollera när modal ska öppnas och hantera Trip i store
-const Forms: FC<props> = ({ trip }) => {
+const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
   const [destination, setDestination] = useState(trip?.city || "");
   const [date, setDate] = useState(trip?.date || "");
   const [fields, setFields] = useState<string[]>(trip?.activities || [""]);
@@ -53,11 +55,13 @@ const Forms: FC<props> = ({ trip }) => {
   };
 
   //Om Trip finns så uppdaterar vi formuläret med data
-  useEffect(() => {
-    setDestination(trip?.city || "");
-    setDate(trip?.date || "");
-    setFields(trip?.activities || [""]);
-  }, [trip]);
+  type === "edit"
+    ? useEffect(() => {
+        setDestination(trip?.city || "");
+        setDate(trip?.date || "");
+        setFields(trip?.activities || [""]);
+      }, [trip])
+    : null;
 
   const fetchAutocompleteResults = async (value: string) => {
     if (value.length > 2) {
@@ -118,11 +122,20 @@ const Forms: FC<props> = ({ trip }) => {
         activities: fields,
       };
 
-      if (addTrip) {
+      if (type === "add") {
         dispatch(
           showNotification({ message: "Resan är sparad!", visible: true })
         );
         dispatch(addTrip(newTrip));
+      } else if (type === "edit" && setOpenEdit) {
+        dispatch(
+          showNotification({
+            visible: true,
+            message: "Vacation plan edited",
+          })
+        );
+        dispatch(editTrip(newTrip));
+        setOpenEdit(false);
       }
     } else {
       console.log("Fyll i alla fält!");
@@ -132,8 +145,8 @@ const Forms: FC<props> = ({ trip }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-auto h-full px-4 bg-gray-400 shadow rounded-2xl
- p-5 mb-4 border-2 border-white z-10"
+      className="object-center max-w-fit px-4 bg-gray-400 shadow rounded-2xl
+ p-5 mb-4 border-2 border-white z-50 flex-col"
     >
       {notification ? (
         <NotificationBox
@@ -142,13 +155,13 @@ const Forms: FC<props> = ({ trip }) => {
         />
       ) : null}
       <Fieldset className="p-6 space-y-6 rounded-xl bg-white/5 sm:p-10">
-        <Legend className="font-semibold text-white text-base/7">
-          {trip ? "Redigera" : "Lägg till"} planer för din nästa resa.
-        </Legend>
+        <h1>
+          <Legend className="font-semibold text-white text-4xl">
+            {trip ? "Redigera" : "Lägg till"} resplaner
+          </Legend>
+        </h1>
         <Field>
-          <Label className="font-medium text-white text-sm/6">
-            Destination
-          </Label>
+          <Label className="font-medium text-white text-2xl">Destination</Label>
           <Input
             ref={inputRef}
             value={destination}
@@ -163,7 +176,7 @@ const Forms: FC<props> = ({ trip }) => {
               (e.target as HTMLInputElement).setCustomValidity("")
             }
             className={clsx(
-              "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+              "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-2xl text-white",
               "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
             )}
           />
@@ -184,7 +197,7 @@ const Forms: FC<props> = ({ trip }) => {
           )}
         </Field>
         <Field>
-          <Label className="font-medium text-white text-sm/6">Datum</Label>
+          <Label className="font-medium text-white text-2xl">Datum</Label>
 
           <div className="relative">
             <Input
@@ -201,23 +214,23 @@ const Forms: FC<props> = ({ trip }) => {
                 (e.target as HTMLInputElement).setCustomValidity("")
               }
               className={clsx(
-                "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+                "mt-3 block w-full rounded-lg border-none bg-white/5 py-1.5 px-3 text-2xl text-white",
                 "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
               )}
             />
           </div>
         </Field>
         <Field>
-          <Label className="font-medium text-white text-sm/6">
-            Aktiviteter
+          <Label className="font-medium text-white text-2xl">
+            Aktiviteter för resan
           </Label>
-          <Description className="text-sm/6 text-white/50">
+          <Description className="text-2xl text-white/50">
             Här lägger du till dina aktiviteter för resan.
           </Description>
 
           {fields.map((activity, index) => (
             <div key={index} className="relative py-3">
-              <Label className="font-medium text-white text-sm/6">
+              <Label className="font-medium text-white text-2xl">
                 Aktivitet
               </Label>
               <Input
@@ -237,7 +250,7 @@ const Forms: FC<props> = ({ trip }) => {
                   (e.target as HTMLInputElement).setCustomValidity("")
                 }
                 className={clsx(
-                  "mt-3 block w-full resize-none rounded-lg border-none bg-white/5 py-1.5 px-3 text-sm/6 text-white",
+                  "mt-3 block w-full resize-none rounded-lg border-none bg-white/5 py-1.5 px-3 text-2xl text-white",
                   "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
                 )}
               />

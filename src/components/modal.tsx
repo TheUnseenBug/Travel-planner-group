@@ -12,7 +12,8 @@ const Modal: FC<Props> = ({ open, setOpen, children }) => {
     <Dialog
       open={open}
       onClose={() => setOpen(false)}
-      className="relative z-20"
+      style={{ zIndex: 2000 }}
+      className="relative "
     >
       <DialogBackdrop
         className="fixed inset-0 transition-opacity bg-gray-500/75"
