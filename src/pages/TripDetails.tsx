@@ -26,8 +26,8 @@ const TripDetails: React.FC = () => {
   }
 
   return (
-    <div className="">
-      <div className="h-screen flex-col justify-center content-center w-screen text-black">
+    <div className="z-2 h-screen flex flex-wrap">
+      <div className=" flex-col justify-center content-center w-screen text-black">
         <section className="m-2 bg-gray-100  w-96 p-3 text-opacity-100 rounded-sm">
           <h2 className="text-2xl font-bold mb-2">{trip.city}</h2>
           <TripImage city={trip.city} />

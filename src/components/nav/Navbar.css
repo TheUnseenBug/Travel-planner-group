@@ -3,8 +3,10 @@
 }
 
 .footerBody {
-  background-color: #0f172a;
-  min-width: 100%;
+    background-color: #0f172a;
+    min-width: 100%;
+    opacity: 100%;
+    z-index: 2;
 }
 
 .madeBy {
