@@ -14,7 +14,7 @@ const Button: FC<props> = ({ text, onClick, type, className }) => {
       type={type ? type : "button"}
       onClick={onClick}
       className={classNames(
-        `px-2 py-1 text-xs font-semibold text-white rounded-sm shadow-xs bg-amber-600 hover:bg-amber-500 focus-visible:outline-2 focus-visible:outline-offset-2 z-40 focus-visible:outline-amber-600, ${className}`
+        `px-4 py-1 text-base font-semibold text-white rounded-sm shadow-xs bg-blue-700 hover:bg-blue-400 focus-visible:outline-2 focus-visible:outline-offset-2 z-40 focus-visible:outline-amber-600, ${className}`
       )}
     >
       {text}
