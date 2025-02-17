@@ -18,9 +18,9 @@ function Home() {
   // console.log(trips);
   return (
     <>
-      <main className="m-5 h-screen flex justify-start items-center flex-col z-2 relative">
-        <h1 className="text-6xl m-5 text-white">Reseplaneraren</h1>
-        <h2 className="m-5 text-2xl italic text-white">
+      <main className="homeScreen m-5 flex justify-start items-center flex-col z-2 relative">
+        <h1 className="lg:text-6xl md:text-4xl sm:text-4xl m-5 text-white">Reseplaneraren</h1>
+        <h2 className="m-5 lg:text-4xl md:text-3xl sm:text-2xl italic text-white text-center">
           Är du redo att planera din nästa drömresa?
         </h2>
         <Link
@@ -36,7 +36,7 @@ function Home() {
               <h3 className="text-4xl font-mono text-white text-center mb-3">
                 Dina nästa resor
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="flex flex-wrap m-2 justify-center">
                 {recentTrips.map((trip) => (
                   <TripCard key={trip.id} trip={trip} />
                 ))}
