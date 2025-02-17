@@ -18,7 +18,7 @@ function Home() {
   // console.log(trips);
   return (
     <>
-      <main className="homeScreen m-5 flex justify-start items-center flex-col z-2 relative">
+      <main className="h-screen m-5 flex justify-start items-center flex-col z-2 relative">
         <h1 className="lg:text-6xl md:text-4xl sm:text-4xl m-5 text-white">Reseplaneraren</h1>
         <h2 className="m-5 lg:text-4xl md:text-3xl sm:text-2xl italic text-white text-center">
           Är du redo att planera din nästa drömresa?
