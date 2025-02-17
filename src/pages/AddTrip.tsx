@@ -2,8 +2,8 @@ import Forms from "../components/Form/forms";
 
 export default function AddTrip() {
   return (
-    <div className="add-trip flex justify-center content-center">
+    <main className="m-5 h-screen flex justify-start items-center flex-col z-2 relative">
       <Forms type="add" />
-    </div>
+    </main>
   );
 }
