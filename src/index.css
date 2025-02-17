@@ -8,6 +8,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   filter: invert(1);
 }
 
+*{
+  box-sizing: border-box;
+}
+
+
 .backgroundContainer {
   position: relative;
   width: 100%;
@@ -27,3 +32,4 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   transition: background-image 1s ease-in-out;
   opacity: 25%;
 }
+
