@@ -88,7 +88,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-auto h-full px-4 bg-gray-400 shadow rounded-2xl
+      className="w-auto  px-4 bg-gray-400 shadow rounded-2xl
  p-5 mb-4 border-2 border-white z-10"
     >
       {notification ? (
