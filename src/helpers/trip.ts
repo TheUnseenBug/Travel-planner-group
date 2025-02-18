@@ -2,8 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Trip } from "../types/types";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const UNSPLASH_ACCESS_KEY = "BtCx07O1WWnCeGBJCmyJJNxvcDH8KZj6Tai5k417mTM";
-
+const UNSPLASH_ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 const fetchImages = async (city: string): Promise<any> => {
   try {
     const response = await fetch(
@@ -13,7 +12,10 @@ const fetchImages = async (city: string): Promise<any> => {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
     const data = await response.json();
-    return data.results; // Assuming you want the 'results' array
+    const imageUrls: string[] = data.results.map(
+      (result: any) => result.urls.regular
+    );
+    return imageUrls;
   } catch (error) {
     console.error("Error fetching images:", error);
     throw error; // Re-throw to let the Redux Toolkit handle the error state
