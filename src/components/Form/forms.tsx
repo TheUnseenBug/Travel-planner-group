@@ -56,6 +56,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
       const newTrip = {
         id: trip ? trip.id : Math.floor(Math.random() * 10000).toString(),
         city: destination,
+        // cityShort: destination.split(",")[0],
         date: date,
         activities: fields,
       };
@@ -73,7 +74,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
         dispatch(
           showNotification({
             visible: true,
-            message: "Vacation plan edited",
+            message: "Din resa är uppdaterad!",
           })
         );
         dispatch(editTrip(newTrip));

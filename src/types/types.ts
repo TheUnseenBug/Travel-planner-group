@@ -3,6 +3,7 @@ export interface Trip {
   activities?: string[];
   date?: string;
   city: string;
+  // cityShort: string;
   images?: string[];
 }
 

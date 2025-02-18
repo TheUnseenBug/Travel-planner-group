@@ -28,12 +28,14 @@ const TripDetails: React.FC = () => {
     <div className="w-full h-screen flex justify-center items-center">
       <div className="container flex-col justify-center content-center text-black w-96">
         <section className="m-2 bg-gray-100 w-full p-3 text-opacity-100 rounded-sm">
-          <h2 className="text-2xl font-bold mb-2">{trip.city}</h2>
+          <h2 className="text-2xl font-bold mb-2">
+            Din resa till {trip.city.split(",")[0]}
+          </h2>
           <div className="w-full h-48 relative">
             <img
               className="rounded-2xl mb-2 w-full h-full object-cover"
               src={trip.images?.[0]}
-              alt="Bild från staden du ska besöka"
+              alt="Bild från ditt resmål"
             />
           </div>
 
