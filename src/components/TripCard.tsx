@@ -6,6 +6,19 @@ interface TripCardProps {
 }
 
 const TripCard: React.FC<TripCardProps> = ({ trip }) => {
+  const text = trip.city;
+  const firstCommaIndex = text.indexOf(",");
+
+  let locationName, rest;
+  if (firstCommaIndex === -1) {
+    // Om inget kommatecken hittas blir hela strängen resultatet.
+    locationName = text;
+    rest = "";
+  } else {
+    locationName = text.substring(0, firstCommaIndex);
+    rest = text.substring(firstCommaIndex + 1);
+  }
+
   return (
     <Link to={`/trips/${trip.id}`} className="block z-50">
       <div
@@ -13,7 +26,7 @@ const TripCard: React.FC<TripCardProps> = ({ trip }) => {
  p-4 mb-4 border-2 max-w-100 border-white hover:scale-95 m-2"
       >
         <h3 className="text-white text-center text-2xl font-bold mb-2">
-          {trip.city}
+          {locationName}
         </h3>
         <div className="w-full h-48 relative">
           <img
