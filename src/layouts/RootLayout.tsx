@@ -6,7 +6,7 @@ import RotatingBackground from "../components/RotatingBackground";
 
 export default function RootLayout() {
   return (
-    <div className="nav-layout w-full font-mono">
+    <div className="root-layout w-full font-mono">
       <Navbar />
       <main>
         <RotatingBackground>

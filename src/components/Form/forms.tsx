@@ -1,9 +1,4 @@
-import {
-  Description,
-  Field,
-  Fieldset,
-  Legend,
-} from "@headlessui/react";
+import { Description, Field, Fieldset, Legend } from "@headlessui/react";
 import clsx from "clsx";
 import { FC, useEffect, useState, useRef } from "react";
 import Button from "../button";
@@ -70,6 +65,10 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
           showNotification({ message: "Resan är sparad!", visible: true })
         );
         dispatch(addTrip(newTrip));
+        // Reset form
+        setDestination("");
+        setDate("");
+        setFields([""]);
       } else if (type === "edit" && setOpenEdit) {
         dispatch(
           showNotification({
