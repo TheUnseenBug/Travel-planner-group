@@ -24,7 +24,7 @@ const TripDetails: React.FC = () => {
   if (!trip) {
     return <div className="text-white p-4">Resan kunde inte hittas</div>;
   }
-
+  console.log(trip);
   return (
     <div className="w-full h-screen flex justify-center items-center">
       <div className="container flex-col justify-center content-center text-black w-96">
