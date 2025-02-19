@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../types/types";
 import TripCard from "../components/TripCard";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Button from "../components/button";
 
 function Home() {
   const trips = useSelector((state: RootState) => state.trip.trips);
@@ -15,35 +16,42 @@ function Home() {
     })
     .slice(0, 3);
 
+  const navigate = useNavigate();
+
   // console.log(trips);
   return (
     <>
-      <main className="m-5 flex justify-start items-center flex-col z-2 relative">
-        <h1 className="lg:text-6xl md:text-4xl sm:text-4xl m-5 text-white">Reseplaneraren</h1>
-        <h2 className="m-5 lg:text-4xl md:text-3xl sm:text-2xl italic text-white text-center">
-          Är du redo att planera din nästa drömresa?
-        </h2>
-        <Link
-          className="p-2 hover:underline text-white font-bold"
-          to="/AddTrip"
-        >
-          Lägg till ny resa
-        </Link>
+      <main className="m-5 flex justify-center items-center flex-col z-2 relative gap-10 my-14">
+        <h1 className="lg:text-6xl md:text-4xl sm:text-4xl text-white text-center">
+          Är du redo att planera nästa drömresa?
+        </h1>
+
+        <Button
+          className="bg-blue-800 scale-200"
+          onClick={() => navigate("/AddTrip")}
+          text="Lägg till en ny resa"
+        />
+
         {/* Show the three most recent trips */}
         <div className="mt-5 w-full flex flex-col items-center">
           {recentTrips.length > 0 ? (
             <>
               <h3 className="text-4xl font-mono text-white text-center mb-3">
-                Dina nästa resor
+                Dina kommande resor
               </h3>
               <div className="flex flex-wrap m-2 justify-center">
                 {recentTrips.map((trip) => (
                   <TripCard key={trip.id} trip={trip} />
                 ))}
               </div>
+              <Button
+                className="bg-blue-800 scale-200"
+                onClick={() => navigate("/Trips")}
+                text="Alla resor"
+              />
             </>
           ) : (
-            <p className="text-white text-lg">Du har inga resor inplanerade.</p>
+            <p className="text-white text-lg">Du har inga inplanerade resor.</p>
           )}
         </div>
       </main>

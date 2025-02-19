@@ -117,7 +117,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
     if (destination && date && fields.length > 0) {
       const newTrip = {
         id: trip ? trip.id : Math.floor(Math.random() * 10000).toString(),
-        city: extractFirstPart(destination),
+        city: destination,
         date: date,
         activities: fields,
       };

@@ -3,7 +3,8 @@ export interface Trip {
   activities?: string[];
   date?: string;
   city: string;
-  image?: string;
+  // cityShort: string;
+  images?: string[];
 }
 
 export interface Notification {

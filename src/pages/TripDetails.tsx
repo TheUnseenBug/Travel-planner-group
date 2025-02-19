@@ -2,7 +2,6 @@ import Map from "../components/map/MapComponent.tsx";
 import { useParams } from "react-router-dom";
 import { RootState, Trip } from "../types/types.ts";
 import { useSelector } from "react-redux";
-import TripImage from "../components/TripImage/TripImage";
 import Button from "../components/button.tsx";
 import Modal from "../components/modal.tsx";
 import Delete from "../components/delete.tsx";
@@ -29,8 +28,17 @@ const TripDetails: React.FC = () => {
     <div className="w-full h-screen flex justify-center items-center">
       <div className="container flex-col justify-center content-center text-black w-96">
         <section className="m-2 bg-gray-100 w-full p-3 text-opacity-100 rounded-sm">
-          <h2 className="text-2xl font-bold mb-2">{trip.city}</h2>
-          <TripImage city={trip.city} />
+          <h2 className="text-2xl font-bold mb-2">
+            Din resa till {trip.city.split(",")[0]}
+          </h2>
+          <div className="w-full h-48 relative">
+            <img
+              className="rounded-2xl mb-2 w-full h-full object-cover"
+              src={trip.images?.[0]}
+              alt="Bild från ditt resmål"
+            />
+          </div>
+
           <p className="mb-2">{trip.date}</p>
           <section className="flex justify-start gap-3">
             <Button

@@ -23,7 +23,7 @@ const NotificationBox: FC<Props> = ({ visible, message }) => {
   if (visible) {
     return (
       <div
-        className={`z-50 fixed top-4 right-4 md:right-8 w-full max-w-sm rounded-md shadow-lg overflow-hidden bg-gray-600 text-white`}
+        className={`z-50 fixed top-20 right-4 md:right-8 w-full max-w-sm rounded-md shadow-lg overflow-hidden bg-gray-600 text-white`}
       >
         <div className="p-4 flex items-center space-x-3">
           <img

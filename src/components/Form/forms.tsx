@@ -1,9 +1,4 @@
-import {
-  Description,
-  Field,
-  Fieldset,
-  Legend,
-} from "@headlessui/react";
+import { Description, Field, Fieldset, Legend } from "@headlessui/react";
 import clsx from "clsx";
 import { FC, useEffect, useState, useRef } from "react";
 import Button from "../button";
@@ -61,6 +56,7 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
       const newTrip = {
         id: trip ? trip.id : Math.floor(Math.random() * 10000).toString(),
         city: destination,
+        // cityShort: destination.split(",")[0],
         date: date,
         activities: fields,
       };
@@ -70,11 +66,15 @@ const Forms: FC<props> = ({ trip, type, setOpenEdit }) => {
           showNotification({ message: "Resan är sparad!", visible: true })
         );
         dispatch(addTrip(newTrip));
+        // Reset form
+        setDestination("");
+        setDate("");
+        setFields([""]);
       } else if (type === "edit" && setOpenEdit) {
         dispatch(
           showNotification({
             visible: true,
-            message: "Vacation plan edited",
+            message: "Din resa är uppdaterad!",
           })
         );
         dispatch(editTrip(newTrip));

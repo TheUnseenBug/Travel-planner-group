@@ -6,4 +6,5 @@ export const store = configureStore({
     trip: tripReducer,
     notif: notificationReducer,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(),
 });
