@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { editTrip } from "../helpers/trip";
 import { Trip } from "../types/types";
 import Button from "./button";
+import { showNotification } from "../helpers/notif";
 
 interface Props {
   trip: Trip;
@@ -37,6 +38,12 @@ const ImageCarousel: React.FC<Props> = ({ trip }) => {
     }
 
     // Dispatch the updated trip
+    dispatch(
+      showNotification({
+        visible: true,
+        message: "Bilden vald!",
+      })
+    );
     dispatch(editTrip(newTrip));
   };
 
@@ -75,7 +82,7 @@ const ImageCarousel: React.FC<Props> = ({ trip }) => {
         ))}
       </div>
 
-      <div className="flex justify-end">
+      <div className="flex justify-end p-2">
         <Button text="Bekräfta" onClick={confirmImage} className="text-xs" />
       </div>
     </div>

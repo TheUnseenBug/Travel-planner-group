@@ -44,11 +44,11 @@ const TripDetails: React.FC = () => {
           <p className="mb-2">{trip.date}</p>
           <section className="flex justify-start gap-3">
             <Button
-              text="Delete"
-              className="bg-red-600"
+              text="Radera"
+              className="bg-red-600 hover:bg-red-400"
               onClick={() => setOpen(true)}
             />
-            <Button text="Edit" onClick={() => setOpenEdit(true)} />
+            <Button text="Redigera" onClick={() => setOpenEdit(true)} />
           </section>
 
           <Modal open={open} setOpen={setOpen}>
