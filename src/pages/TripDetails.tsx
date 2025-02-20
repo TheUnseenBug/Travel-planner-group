@@ -9,6 +9,7 @@ import { useState } from "react";
 
 import Forms from "../components/Form/forms.tsx";
 import ImageCarousel from "../components/image-carousel.tsx";
+import NotificationBox from "../components/notification-box.tsx";
 
 const TripDetails: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -21,12 +22,22 @@ const TripDetails: React.FC = () => {
     state.trip.trips.find((trip: Trip) => trip.id.toString() === id)
   );
 
+  const notification = useSelector(
+    (state: RootState) => state.notif?.notification
+  );
+
   if (!trip) {
     return <div className="text-white p-4">Resan kunde inte hittas</div>;
   }
 
   return (
     <div className="w-full h-screen flex justify-center items-center flex-wrap">
+      {notification ? (
+        <NotificationBox
+          message={notification.message}
+          visible={notification.visible}
+        />
+      ) : null}
       <div className="container  justify-center content-center text-black w-96">
         <section className="m-2  bg-gray-100 w-full p-3 text-opacity-100 rounded-sm">
           <h2 className="text-2xl font-bold mb-2">
