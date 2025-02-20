@@ -23,29 +23,29 @@ Map Integration: A map displays the location of the destination using OpenStreet
 ### 3. Add & Edit Trips
 Dynamic Form: A form to add or edit trip details, including:
       
-      Destination (with autocomplete suggestions).
+Destination (with autocomplete suggestions).
       
-      Departure date.
+Departure date.
       
-      Activities list, with options to add or remove activities.
-      
-      Notifications: Shows success messages when trips are added or updated.
+Activities list, with options to add or remove activities.
+
+Notifications: Shows success messages when trips are added or updated.
 
 ### 4. Autocomplete for Destinations
 Uses Nominatim's OpenStreetMap API to provide suggestions for destinations based on user input.
 
 ### Installation
 
-Clone the repository:
-git clone <repository-url>
-cd <repository-folder>
+      Clone the repository:
+            git clone <repository-url>
+            cd <repository-folder>
 
-Install dependencies:
-npm install
+      Install dependencies:
+            npm install
 
-Start the development server:
-npm start
-
+      Start the development server:
+      npm start
+      
 The app will be available at http://localhost:3000.
 
 ## Project Structure
