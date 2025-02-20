@@ -1,6 +1,6 @@
 # React Travel Planner
 
-This project is a React-Redux Travel Planner application that helps users plan and manage their trips. Users can add, edit, and delete trips, view trip details, and see upcoming trips in a user-friendly interface. The app integrates location search and activity management to enhance trip planning.
+This project is a React-Redux Travel Planner application that helps users plan and manage their trips. Users can add, edit, and delete trips, view trip details, and see upcoming trips in a user-friendly interface. The app integrates location search, images based on city name, and activity management to enhance trip planning.
 
 ## Features
 
@@ -20,6 +20,8 @@ Delete Trip: Users can delete a trip after confirmation.
 
 Map Integration: A map displays the location of the destination using OpenStreetMap.
 
+Image API Integration: Based on the location of the trip an image is fetched with the correlated location.
+
 ### 3. Add & Edit Trips
 Dynamic Form: A form to add or edit trip details, including:
       
@@ -33,6 +35,9 @@ Notifications: Shows success messages when trips are added or updated.
 
 ### 4. Autocomplete for Destinations
 Uses Nominatim's OpenStreetMap API to provide suggestions for destinations based on user input.
+
+### 5. Navigation
+Users can use the header and the footer to navigate application
 
 ### Installation
 
@@ -66,6 +71,8 @@ This project uses Redux to manage application state. The state is structured to 
 Trips: Stores all trip details.
 
 Notifications: Manages notification messages for user actions (e.g., trip saved or edited).
+
+
 
 
 # React + TypeScript + Vite
