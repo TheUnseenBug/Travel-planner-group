@@ -20,7 +20,7 @@ Delete Trip: Users can delete a trip after confirmation.
 
 Map Integration: A map displays the location of the destination using OpenStreetMap.
 
-Image API Integration: Based on the location of the trip an image is fetched with the correlated location.
+Image API Integration: Based on the location of the trip an image is fetched.
 
 ### 3. Add & Edit Trips
 Dynamic Form: A form to add or edit trip details, including:
