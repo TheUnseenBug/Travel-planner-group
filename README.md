@@ -6,20 +6,29 @@ This project is a React-Redux Travel Planner application that helps users plan a
 
 ### 1. Home Page
 Add a New Trip: Users can easily navigate to the trip form to add a new trip.
+
 View Upcoming Trips: Displays the three most recent upcoming trips.
+
 View All Trips: Redirects users to a page displaying all trips.
 
 ### 2. Trip Details
 Detailed Trip View: Shows trip destination, date, activities, and images.
+
 Edit Trip: Users can modify the details of the trip.
+
 Delete Trip: Users can delete a trip after confirmation.
+
 Map Integration: A map displays the location of the destination using OpenStreetMap.
 
 ### 3. Add & Edit Trips
 Dynamic Form: A form to add or edit trip details, including:
+      
       Destination (with autocomplete suggestions).
+      
       Departure date.
+      
       Activities list, with options to add or remove activities.
+      
       Notifications: Shows success messages when trips are added or updated.
 
 ### 4. Autocomplete for Destinations
@@ -53,7 +62,9 @@ TripCard: A card component used to display individual trip summaries.
 
 ## State Management
 This project uses Redux to manage application state. The state is structured to include:
+
 Trips: Stores all trip details.
+
 Notifications: Manages notification messages for user actions (e.g., trip saved or edited).
 
 
