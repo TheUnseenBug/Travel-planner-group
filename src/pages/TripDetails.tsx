@@ -26,9 +26,9 @@ const TripDetails: React.FC = () => {
   }
 
   return (
-    <div className="w-full h-screen flex justify-center items-center">
-      <div className="container flex-col justify-center content-center text-black w-96">
-        <section className="m-2 bg-gray-100 w-full p-3 text-opacity-100 rounded-sm">
+    <div className="w-full h-screen flex justify-center items-center flex-wrap">
+      <div className="container  justify-center content-center text-black w-96">
+        <section className="m-2  bg-gray-100 w-full p-3 text-opacity-100 rounded-sm">
           <h2 className="text-2xl font-bold mb-2">
             Din resa till {trip.city.split(",")[0]}
           </h2>
