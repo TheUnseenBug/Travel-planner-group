@@ -5,6 +5,7 @@ This project is a React-Redux Travel Planner application that helps users plan a
 ## Features
 
 ### 1. Home Page
+
 Add a New Trip: Users can easily navigate to the trip form to add a new trip.
 
 View Upcoming Trips: Displays the three most recent upcoming trips.
@@ -12,6 +13,7 @@ View Upcoming Trips: Displays the three most recent upcoming trips.
 View All Trips: Redirects users to a page displaying all trips.
 
 ### 2. Trip Details
+
 Detailed Trip View: Shows trip destination, date, activities, and images.
 
 Edit Trip: Users can modify the details of the trip.
@@ -23,20 +25,23 @@ Map Integration: A map displays the location of the destination using OpenStreet
 Image API Integration: Based on the location of the trip an image is fetched.
 
 ### 3. Add & Edit Trips
+
 Dynamic Form: A form to add or edit trip details, including:
-      
+
 Destination (with autocomplete suggestions).
-      
+
 Departure date.
-      
+
 Activities list, with options to add or remove activities.
 
 Notifications: Shows success messages when trips are added or updated.
 
 ### 4. Autocomplete for Destinations
+
 Uses Nominatim's OpenStreetMap API to provide suggestions for destinations based on user input.
 
 ### 5. Navigation
+
 Users can use the header and the footer to navigate application
 
 ### Installation
@@ -50,8 +55,16 @@ Users can use the header and the footer to navigate application
 
       Start the development server:
       npm start
-      
+
+
 The app will be available at http://localhost:3000.
+
+Create a .env file and add it to the root directory, paste this text to the file:
+
+VITE_UNSPLASH_ACCESS_KEY=BtCx07O1WWnCeGBJCmyJJNxvcDH8KZj6Tai5k417mTM
+UNSPLASH_SECRET_KEY=lzFw--VCdctS6qbKMUrD9tIuUfKv_RpcTgHOpv5O6Ys
+
+After this you will be able to fetch images from unsplash in the application
 
 ## Project Structure
 
@@ -66,14 +79,12 @@ MapComponent: Displays a map of the trip's destination.
 TripCard: A card component used to display individual trip summaries.
 
 ## State Management
+
 This project uses Redux to manage application state. The state is structured to include:
 
 Trips: Stores all trip details.
 
 Notifications: Manages notification messages for user actions (e.g., trip saved or edited).
-
-
-
 
 # React + TypeScript + Vite
 
@@ -95,11 +106,11 @@ export default tseslint.config({
   languageOptions: {
     // other options...
     parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
       tsconfigRootDir: import.meta.dirname,
     },
   },
-})
+});
 ```
 
 - Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
@@ -108,11 +119,11 @@ export default tseslint.config({
 
 ```js
 // eslint.config.js
-import react from 'eslint-plugin-react'
+import react from "eslint-plugin-react";
 
 export default tseslint.config({
   // Set the react version
-  settings: { react: { version: '18.3' } },
+  settings: { react: { version: "18.3" } },
   plugins: {
     // Add the react plugin
     react,
@@ -121,7 +132,7 @@ export default tseslint.config({
     // other rules...
     // Enable its recommended rules
     ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
+    ...react.configs["jsx-runtime"].rules,
   },
-})
+});
 ```
