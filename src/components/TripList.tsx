@@ -28,7 +28,7 @@ const TripList: React.FC<TripListProps> = ({ trips }) => {
 
   return (
     <div className="flex-column">
-      <h1 className="lg:text-6xl md:text-4xl sm:text-4xl text-white text-center">
+      <h1 className="lg:text-6xl md:text-4xl sm:text-4xl text-white text-center my-4">
         Dina resor
       </h1>
       <div className="flex flex-wrap col-end-4 gap-3 justify-center">
