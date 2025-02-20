@@ -8,6 +8,7 @@ import Delete from "../components/delete.tsx";
 import { useState } from "react";
 
 import Forms from "../components/Form/forms.tsx";
+import ImageCarousel from "../components/image-carousel.tsx";
 
 const TripDetails: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -31,13 +32,14 @@ const TripDetails: React.FC = () => {
           <h2 className="text-2xl font-bold mb-2">
             Din resa till {trip.city.split(",")[0]}
           </h2>
-          <div className="w-full h-48 relative">
+          <ImageCarousel trip={trip} />
+          {/* <div className="w-full h-48 relative">
             <img
               className="rounded-2xl mb-2 w-full h-full object-cover"
               src={trip.images?.[0]}
               alt="Bild från ditt resmål"
             />
-          </div>
+          </div> */}
 
           <p className="mb-2">{trip.date}</p>
           <section className="flex justify-start gap-3">
